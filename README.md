@@ -8,7 +8,7 @@ It is live here: http://jamaps.github.io/red_light_cameras_toronto/
 - The map tiles are from Mapbox.  
 - And the map was built using leaflet.js library.
 
-#### These are the general steps I followed to build the map
+#### This was how I built the map:
 
 1 - Pull the data off the City of Toronto's Open Data website.
 
@@ -26,15 +26,15 @@ It is live here: http://jamaps.github.io/red_light_cameras_toronto/
 
 7 - Save the .geojson file as a .js file and edit it so the data is attached to a variable
 
-    var campoints = geojson_data
+    var campoints = { geojson_data }
 
-8 - Create map icon for camera locations and load it onto the map via L.geoJson.
+8 - Create map icon for camera locations and load it into the map with the .js file using L.geoJson
 
 9 - Set the bounds of the map and add a title to the map.
 
-10 - Add attribution as a seperate div at the bottom of the map.
+10 - Add attribution as a separate div at the bottom of the map.
 
-11 - Use CSS to style and fit both divs onto the same page
+11 - Use CSS to style and fit both divs into a single page view without a scroll bar
 
     #map { height: calc(100vh - 17px); }
     #footer { height: 16px; }
@@ -43,7 +43,7 @@ That's about it.
 
 Feel free to email me with any comments or questions at jeff.allen |at| mail.utoronto.ca
 
-- Jeff Allen
+Jeff Allen
 
 This map and its code is CC-BY-CA 3.0
 
