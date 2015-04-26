@@ -17,6 +17,7 @@ a {
 }
 
 #map {
+    height: 97vh;
     height: -webkit-calc(100vh - 17px);
     height: calc(100vh - 17px);
 }
