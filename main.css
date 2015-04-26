@@ -17,8 +17,8 @@ a {
 }
 
 #map {
-    height: calc(100% - 17px);
-	
+    height: calc(100vh - 17px);
+	height: -webkit-calc(50vh - 17px);
 }
 
 .site-footer {
