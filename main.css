@@ -1,12 +1,12 @@
 * {
     margin:0;
-	padding:0;    
+    padding:0;    
 }
 
 body {
     margin: 0 auto;
     padding: 0em 0em 0em;
-    max-width: absolute;
+    width: 100%;
     background-color: #141414;
     box-shadow: 0 0 0px rgba(0.5, 0.5, 0.5, 0.5);
 	height: 100%;
