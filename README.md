@@ -28,7 +28,7 @@ It is live here: http://jamaps.github.io/red_light_cameras_toronto/
 
     var campoints = { geojson_data }
 
-8 - Create map icon for camera locations and load it into the map with the .js file using L.geoJson
+8 - Create map icon for camera locations and load data into the map with the .js file using L.geoJson
 
 9 - Set the bounds of the map and add a title to the map.
 
@@ -39,12 +39,14 @@ It is live here: http://jamaps.github.io/red_light_cameras_toronto/
     #map { height: calc(100vh - 17px); }
     #footer { height: 16px; }
 
+12 - Style the map (font, colours, etc.)
+
 That's about it.
 
-Feel free to email me with any comments or questions at jeff.allen |at| mail.utoronto.ca
+Feel free to email me with any comments or questions at jeff.allen AT mail.utoronto.ca
 
 Jeff Allen
 
-This map and its code is CC-BY-CA 3.0
+This map and its code is CC BY-NC-SA 3.0: http://creativecommons.org/licenses/by-nc-sa/3.0/
 
 
