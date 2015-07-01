@@ -1,14 +1,15 @@
 ### Map of Toronto's Red Light Cameras
 
-This is a simple web-map showing the location of Toronto's Red Light Cameras
+A simple web-map showing the location of Toronto's Red Light Cameras
 
-You can view it here: http://jamaps.github.io/red_light_cameras_toronto/
+Live here: http://jamaps.github.io/red_light_cameras_toronto/
 
 - Data is from the City of Toronto Open Data and OpenStreetMap.  
 - The map tiles are from Mapbox.  
 - And the map was built using the leaflet.js library.
 
-#### These are the general steps I followed to build the map:
+
+#### Steps in building the map:
 
 1 - Pull the data off the City of Toronto's Open Data website.
 
