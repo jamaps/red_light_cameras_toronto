@@ -44,10 +44,9 @@ Live here: http://jamaps.github.io/red_light_cameras_toronto/
 
 That's about it.
 
-Feel free to email me with any comments or questions at jeff.allen AT mail.utoronto.ca
 
-Jeff Allen
+Jeff Allen (2015)
 
-This project is licensed CC BY-NC-SA 3.0: http://creativecommons.org/licenses/by-nc-sa/3.0/
+CC BY-NC-SA 3.0: http://creativecommons.org/licenses/by-nc-sa/3.0/
 
 
