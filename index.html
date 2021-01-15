@@ -3,43 +3,53 @@
 <html>
 
 <head>
-	
-	<link rel="icon" type="image/png" href="marker1.png" />
+
 	<title>Toronto's Red Light Cameras</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-    	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+	 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+	integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+	crossorigin=""></script>
 	<link rel="stylesheet" href="main.css">
 	<script src="redlightcameras.js" type="text/javascript"></script>
 
 </head>
 
 <body>
-	
+
 	<div id="map"></div>
-  
+
 	<div class="site-footer">
-		<p>Built by Jeff Allen, <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA 3.0</a> <b>|||</b>  Last Updated 04/2015  <b>|||</b>  Sources: <a href="http://leafletjs.com/" target="_blank">Leaflet</a>, <a href="http://www.mapbox.com/" target="_blank">Mapbox</a>, <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a>, <a href="http://www1.toronto.ca/wps/portal/contentonly?vgnextoid=9e56e03bb8d1e310VgnVCM10000071d60f89RCRD" target="_blank">City of Toronto Open Data</a> <b>|||</b> 
-			Map Data & Code is on <a href="https://github.com/jamaps/red_light_cameras_toronto" target="_blank">GitHub</a></p>
+		<p>Built by Jeff Allen, <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank">CC-BY-CA</a> <b>|||</b>  Last Updated 04/2015  <b>|||</b>  Sources: <a href="http://leafletjs.com/" target="_blank">Leaflet</a>, <a href="http://www.mapbox.com/" target="_blank">Mapbox</a>, <a href="http://www.openstreetmap.org/" target="_blank">OpenStretMap</a>, <a href="http://www1.toronto.ca/wps/portal/contentonly?vgnextoid=9e56e03bb8d1e310VgnVCM10000071d60f89RCRD" target="_blank">City of Toronto Open Data</a> <b>|||</b>
+			Map Data & Code Available <a href="https://github.com/jamaps/red_light_cameras_toronto" target="_blank">Here</a></p>
 	</div>
-	
+
 	<script>
-		
+
 		//set the map bounds
 		var southWest = new L.LatLng(43.4, -79.8);
 		var northEast = new L.LatLng(44, -78.8);
 		var bounds = new L.LatLngBounds(southWest, northEast);
-		
-		//set the initial map location and zoom level
-		var map = L.map('map', { zoomControl:false, attributionControl:false, maxBounds: bounds }).setView([43.69, -79.4], 12);	
 
-		//load map tiles
-		L.tileLayer('https://{s}.tiles.mapbox.com/v3/jeffallen.m0f3h45m/{z}/{x}/{y}.png', {
-			maxZoom: 14, 
-			minZoom: 11, 
-		} ).addTo(map);
-										
+		// L.mapbox.accessToken = 'pk.eyJ1IjoiamVmZmFsbGVuIiwiYSI6ImNqaGloN3gyZzJhMXYzNnAzYjVrb2lneDIifQ.sxS_L0qpsYTXe7XXTuP5eg';
+
+		//set the initial map location and zoom level
+		var map = L.map('map', { zoomControl:false, attributionControl:false, maxBounds: bounds }).setView([43.69, -79.4], 12);
+
+
+
+		L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		maxZoom: 14,
+		minZoom: 11,
+    id: 'jeffallen/ckjyj6g170wxj18t49mfd540e',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoiamVmZmFsbGVuIiwiYSI6ImNqaGloN3gyZzJhMXYzNnAzYjVrb2lneDIifQ.sxS_L0qpsYTXe7XXTuP5eg'
+}).addTo(map);
 		//create marker style
 		var CamPointStyle = L.icon({
 					iconUrl: 'marker1.png',
@@ -47,7 +57,7 @@
 					iconAnchor:   [8, 8],
 		            popupAnchor:  [0, 0],
 		        });
-		
+
 		// load the geojson of camera locations to the map with marker styling and popup content from geojson file
 		L.geoJson(campoints, {
 				pointToLayer: function (feature, latlng) {
@@ -56,7 +66,7 @@
 		                return L.marker(latlng, {icon: CamPointStyle}).bindPopup(popupContent,popupOptions);
 		            }
 				}).addTo(map);
-		
+
 		// add map title
 		var info = L.control({position: 'topleft'})
 		info.onAdd = function (map) {
@@ -67,10 +77,22 @@
 		info.update = function (props) {
 				    this._div.innerHTML = "<p><img src='marker1.png' alt='pass' style='width:16px; height:16px'>  Toronto's Red Light Cameras&nbsp;</p>"
 				};
-		info.addTo(map);	
-						
+		info.addTo(map);
+
 	</script>
 
 </body>
 
 </html>
+
+<!--
+1 - data from city of toronto website
+2 - into QGIS
+3 - concatenated roads to "ROADS_1" || ' & ' || "ROADS_2"
+4 - export to geojson
+5 - edit geojson to js and call it a variable
+6 - set up html file with leaflet documentation from leaflet website
+7 - link in main.css and .js file and load geojson to map
+8 - popups?
+9 - style?
+-->
